@@ -1,0 +1,17 @@
+# venv / build
+.venv/
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.py[cod]
+
+# editor / OS
+.DS_Store
+.idea/
+.vscode/
+
+# local run artifacts
+*.local.*
+scratch/
+examples/*.jsonl

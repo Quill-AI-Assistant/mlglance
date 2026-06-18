@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mlglance"
+dynamic = ["version"]
+description = "Terminal-native live training monitor — loss curves, a validation verdict (converging/overfitting), and which checkpoint to keep. Watches any JSONL trainer over SSH. No browser, no server."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Quill" }]
+keywords = [
+    "machine-learning", "deep-learning", "training", "monitoring", "tui",
+    "terminal", "dashboard", "plotext", "loss-curve", "pytorch", "mlx",
+    "ssh", "jsonl", "checkpoint", "overfitting", "validation",
+    "tensorboard-alternative", "training-monitor",
+]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: System :: Monitoring",
+]
+dependencies = ["plotext>=5.2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+mlglance = "mlglance.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Quill-AI-Assistant/mlglance"
+Repository = "https://github.com/Quill-AI-Assistant/mlglance"
+Issues = "https://github.com/Quill-AI-Assistant/mlglance/issues"
+Changelog = "https://github.com/Quill-AI-Assistant/mlglance/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+include = ["mlglance*"]
+
+[tool.setuptools.dynamic]
+version = { attr = "mlglance.__version__" }

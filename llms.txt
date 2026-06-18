@@ -1,0 +1,35 @@
+# mlglance
+
+> mlglance is a terminal-native live training monitor for PyTorch, MLX, Hugging Face Trainer, and any JSONL-logging trainer. It tails the metrics JSONL your trainer appends to and renders a glanceable dashboard — loss curves, a validation-driven verdict (converging / overfitting / diverging / plateaued), the val-optimal checkpoint to keep, ETA, throughput, and resource health — directly in your terminal, over SSH and inside tmux. No browser, no server, no account. One dependency (plotext). MIT licensed.
+
+## Use it when
+
+- You want to watch a training run over SSH without port-forwarding a TensorBoard server.
+- You want loss curves and a verdict inside tmux or screen, not a browser tab.
+- You need to know which checkpoint to keep once validation stops improving.
+
+## Quick start
+
+- Install: `pip install git+https://github.com/Quill-AI-Assistant/mlglance`
+- Try it instantly, no data needed: `mlglance demo`
+- Watch a real run: `mlglance path/to/metrics.jsonl --watch`
+
+## How it works
+
+Your trainer appends one JSON object per step to a `.jsonl` file, e.g.
+`{"iter": 1, "train_loss": 4.83, "val_loss": 4.02, "lr": 6.7e-5}`. mlglance tails
+that file and renders the dashboard, auto-detecting metric-key aliases
+(step/global_step, loss/train_loss, eval_loss/val_loss, …), eval cadence, and the
+total step count. The loss curve uses plotext (braille) with a zero-dependency
+ASCII fallback. Only a loss is required; other fields are optional.
+
+## How it compares
+
+- vs TensorBoard / Weights & Biases: no browser, no server, no account; and it gives an ML verdict + names the best checkpoint, which they do not.
+- vs plotext / asciichartpy: those are plot libraries with no training awareness; mlglance understands training (verdict, checkpoint, ETA, health).
+
+## Links
+
+- Repository: https://github.com/Quill-AI-Assistant/mlglance
+- README: https://github.com/Quill-AI-Assistant/mlglance/blob/main/README.md
+- Changelog: https://github.com/Quill-AI-Assistant/mlglance/blob/main/CHANGELOG.md
