@@ -15,3 +15,7 @@ __pycache__/
 *.local.*
 scratch/
 examples/*.jsonl
+
+# secrets / env — never commit
+.env
+.env.*
